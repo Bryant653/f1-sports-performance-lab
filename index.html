@@ -8,9 +8,31 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <meta name="theme-color" content="#070b14">
+
+  <meta name="description" content="F1 Esports Performance Lab: análisis, estrategia y desarrollo competitivo de Mobile Legends.">
+
   <title>F1 Esports | Performance Lab</title>
 
   <style>
+
+    :root {
+
+      --bg: #070b14;
+
+      --panel: #0d1424;
+
+      --blue: #168cff;
+
+      --cyan: #52d5ff;
+
+      --white: #f4f8ff;
+
+      --muted: #9baac2;
+
+      --border: rgba(82, 170, 255, 0.2);
+
+    }
 
     * {
 
@@ -22,101 +44,245 @@
 
     }
 
+    html {
+
+      scroll-behavior: smooth;
+
+      scroll-padding-top: 80px;
+
+    }
+
     body {
 
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
 
-      background: #080808;
+      background: var(--bg);
 
-      color: white;
+      color: var(--white);
+
+      line-height: 1.6;
+
+    }
+
+    a {
+
+      color: inherit;
+
+      text-decoration: none;
+
+    }
+
+    .container {
+
+      width: min(1100px, 90%);
+
+      margin: auto;
 
     }
 
     header {
 
-      padding: 25px 20px;
+      position: sticky;
 
-      text-align: center;
+      top: 0;
 
-      background: #111;
+      z-index: 10;
 
-      border-bottom: 3px solid #ffd600;
+      background: rgba(7, 11, 20, 0.95);
 
-    }
+      backdrop-filter: blur(12px);
 
-    header h1 {
-
-      color: #ffd600;
-
-      font-size: 42px;
-
-      letter-spacing: 5px;
+      border-bottom: 1px solid var(--border);
 
     }
 
-    header p {
+    .navbar {
 
-      margin-top: 8px;
+      min-height: 76px;
 
-      color: #ccc;
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+    }
+
+    .brand {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 11px;
+
+    }
+
+    .logo {
+
+      width: 46px;
+
+      height: 46px;
+
+      display: grid;
+
+      place-items: center;
+
+      border: 2px solid var(--blue);
+
+      border-radius: 12px;
+
+      color: var(--cyan);
+
+      font-size: 22px;
+
+      font-weight: 900;
+
+      font-style: italic;
+
+      box-shadow: 0 0 18px rgba(22, 140, 255, 0.2);
+
+    }
+
+    .brand h1 {
+
+      font-size: 17px;
+
+      letter-spacing: 1.5px;
+
+    }
+
+    .brand p {
+
+      color: var(--cyan);
+
+      font-size: 10px;
+
+      letter-spacing: 2px;
 
     }
 
     nav {
 
-      padding: 15px;
+      display: flex;
 
-      text-align: center;
+      flex-wrap: wrap;
 
-      background: #191919;
+      gap: 19px;
 
     }
 
     nav a {
 
-      color: #ffd600;
+      color: var(--muted);
 
-      text-decoration: none;
+      font-size: 13px;
 
-      margin: 0 12px;
+      transition: color 0.2s;
 
-      font-weight: bold;
+    }
+
+    nav a:hover {
+
+      color: var(--cyan);
 
     }
 
     .hero {
 
-      padding: 85px 20px;
+      position: relative;
 
-      text-align: center;
+      overflow: hidden;
 
-      background: linear-gradient(135deg, #171717, #080808);
+      padding: 105px 0 95px;
+
+      background:
+
+        radial-gradient(ellipse at 80% 35%, rgba(22, 140, 255, 0.19), transparent 45%),
+
+        linear-gradient(145deg, #0d172a, #070b14 65%);
+
+      border-bottom: 1px solid var(--border);
 
     }
 
-    .hero h2 {
+    .hero::after {
 
-      font-size: 36px;
+      content: "F1";
+
+      position: absolute;
+
+      right: 3%;
+
+      top: 8%;
+
+      color: rgba(82, 170, 255, 0.045);
+
+      font-size: clamp(180px, 35vw, 390px);
+
+      font-weight: 900;
+
+      font-style: italic;
+
+      pointer-events: none;
+
+    }
+
+    .hero-content {
+
+      position: relative;
+
+      z-index: 1;
+
+      max-width: 720px;
+
+    }
+
+    .eyebrow {
+
+      color: var(--cyan);
+
+      font-size: 12px;
+
+      font-weight: bold;
+
+      letter-spacing: 3px;
 
       margin-bottom: 20px;
 
     }
 
-    .hero span {
+    .hero h2 {
 
-      color: #ffd600;
+      font-size: clamp(38px, 7vw, 72px);
+
+      line-height: 1.08;
+
+      letter-spacing: -2px;
+
+      margin-bottom: 22px;
+
+    }
+
+    .hero h2 span {
+
+      color: var(--blue);
+
+      text-shadow: 0 0 30px rgba(22, 140, 255, 0.25);
 
     }
 
     .hero p {
 
-      color: #bbb;
+      max-width: 570px;
 
-      max-width: 600px;
+      color: var(--muted);
 
-      margin: 0 auto 28px;
+      font-size: 16px;
 
-      line-height: 1.7;
+      margin-bottom: 30px;
 
     }
 
@@ -124,89 +290,331 @@
 
       display: inline-block;
 
-      padding: 13px 24px;
+      padding: 13px 21px;
 
-      background: #ffd600;
+      border-radius: 6px;
 
-      color: #080808;
+      background: linear-gradient(100deg, #168cff, #52baff);
 
-      text-decoration: none;
+      color: #04101f;
 
-      font-weight: bold;
+      font-size: 13px;
 
-      border-radius: 5px;
+      font-weight: 800;
 
-    }
+      box-shadow: 0 5px 24px rgba(22, 140, 255, 0.18);
 
-    section {
-
-      padding: 50px 20px;
-
-      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
 
     }
 
-    section h2 {
+    .button:hover {
 
-      color: #ffd600;
+      transform: translateY(-3px);
 
-      margin-bottom: 25px;
+      box-shadow: 0 8px 30px rgba(22, 140, 255, 0.3);
+
+    }
+
+    .section {
+
+      padding: 76px 0;
+
+    }
+
+    .section-heading {
+
+      margin-bottom: 32px;
+
+    }
+
+    .section-heading .eyebrow {
+
+      margin-bottom: 8px;
+
+    }
+
+    .section-heading h2 {
+
+      font-size: clamp(27px, 4vw, 38px);
+
+      margin-bottom: 10px;
+
+    }
+
+    .section-heading p {
+
+      color: var(--muted);
+
+      max-width: 650px;
+
+    }
+
+    .mission {
+
+      background: linear-gradient(110deg, #0b1322, #0a1020);
+
+      border: 1px solid var(--border);
+
+      border-radius: 14px;
+
+      padding: 30px;
+
+    }
+
+    .mission h3 {
+
+      color: var(--cyan);
+
+      margin-bottom: 12px;
+
+      font-size: 21px;
+
+    }
+
+    .mission p {
+
+      color: var(--muted);
 
     }
 
     .cards {
 
-      display: flex;
+      display: grid;
 
-      justify-content: center;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
 
-      flex-wrap: wrap;
-
-      gap: 20px;
+      gap: 18px;
 
     }
 
     .card {
 
-      background: #171717;
-
-      border: 1px solid #333;
-
-      border-radius: 10px;
-
       padding: 25px;
 
-      width: 260px;
+      border-radius: 12px;
+
+      border: 1px solid var(--border);
+
+      background: linear-gradient(150deg, #101a2d, #0a101c);
+
+      transition: transform 0.25s, border-color 0.25s;
+
+    }
+
+    .card:hover {
+
+      transform: translateY(-5px);
+
+      border-color: var(--blue);
+
+    }
+
+    .card-number {
+
+      color: var(--blue);
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 17px;
 
     }
 
     .card h3 {
 
-      color: #ffd600;
+      font-size: 20px;
 
-      margin-bottom: 12px;
+      margin-bottom: 10px;
 
     }
 
     .card p {
 
-      color: #bbb;
+      color: var(--muted);
 
-      line-height: 1.6;
+      font-size: 14px;
+
+    }
+
+    .training {
+
+      background:
+
+        radial-gradient(ellipse at 100% 50%, rgba(22, 140, 255, 0.1), transparent 50%),
+
+        #090e19;
+
+      border-top: 1px solid var(--border);
+
+      border-bottom: 1px solid var(--border);
+
+    }
+
+    .training-list {
+
+      display: grid;
+
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      gap: 14px;
+
+    }
+
+    .training-item {
+
+      padding: 19px;
+
+      border-left: 3px solid var(--blue);
+
+      background: rgba(16, 26, 45, 0.8);
+
+      border-radius: 0 8px 8px 0;
+
+    }
+
+    .training-item h3 {
+
+      font-size: 16px;
+
+      margin-bottom: 5px;
+
+    }
+
+    .training-item p {
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+    }
+
+    .closing {
+
+      text-align: center;
+
+      padding: 70px 20px;
+
+    }
+
+    .closing h2 {
+
+      font-size: clamp(27px, 5vw, 42px);
+
+      margin-bottom: 14px;
+
+    }
+
+    .closing h2 span {
+
+      color: var(--cyan);
+
+    }
+
+    .closing p {
+
+      max-width: 580px;
+
+      margin: 0 auto 25px;
+
+      color: var(--muted);
 
     }
 
     footer {
 
-      padding: 25px;
+      border-top: 1px solid var(--border);
 
-      text-align: center;
+      background: #05080f;
 
-      background: #111;
+      padding: 27px 0;
 
-      color: #888;
+    }
 
-      border-top: 2px solid #ffd600;
+    .footer-content {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      flex-wrap: wrap;
+
+    }
+
+    footer p {
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+    }
+
+    .footer-name {
+
+      color: var(--cyan);
+
+      font-weight: bold;
+
+      letter-spacing: 1px;
+
+    }
+
+    @media (max-width: 700px) {
+
+      .navbar {
+
+        padding: 13px 0;
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+      }
+
+      nav {
+
+        gap: 17px;
+
+      }
+
+      .hero {
+
+        padding: 75px 0 70px;
+
+      }
+
+      .hero h2 {
+
+        letter-spacing: -1px;
+
+      }
+
+      .cards,
+
+      .training-list {
+
+        grid-template-columns: 1fr;
+
+      }
+
+      .section {
+
+        padding: 55px 0;
+
+      }
+
+      .mission {
+
+        padding: 23px;
+
+      }
 
     }
 
@@ -218,91 +626,259 @@
 
   <header>
 
-    <h1>F1 ESPORTS</h1>
+    <div class="container navbar">
 
-    <p>PERFORMANCE LAB</p>
+      <a class="brand" href="#inicio">
 
-  </header>
+        <div class="logo">F1</div>
 
-  <nav>
+        <div>
 
-    <a href="#inicio">Inicio</a>
+          <h1>F1 ESPORTS</h1>
 
-    <a href="#objetivos">Objetivos</a>
+          <p>PERFORMANCE LAB</p>
 
-    <a href="#entrenamiento">Entrenamiento</a>
+        </div>
 
-  </nav>
+      </a>
 
-  <div class="hero" id="inicio">
+      <nav aria-label="Navegación principal">
 
-    <h2>MEJORA. <span>ADÁPTATE.</span> DOMINA.</h2>
+        <a href="#inicio">Inicio</a>
 
-    <p>
+        <a href="#mision">Misión</a>
 
-      Un espacio dedicado al análisis competitivo,
+        <a href="#analisis">Análisis</a>
 
-      el entrenamiento estratégico y la mejora continua
+        <a href="#entrenamiento">Entrenamiento</a>
 
-      de nuestro equipo de Mobile Legends.
-
-    </p>
-
-    <a class="button" href="#objetivos">Conoce nuestro proyecto</a>
-
-  </div>
-
-  <section id="objetivos">
-
-    <h2>NUESTRA MISIÓN</h2>
-
-    <p>
-
-      Construir un equipo más inteligente, coordinado
-
-      y preparado para competir al máximo nivel.
-
-    </p>
-
-  </section>
-
-  <section id="entrenamiento">
-
-    <h2>ÁREAS DE DESARROLLO</h2>
-
-    <div class="cards">
-
-      <div class="card">
-
-        <h3>MICRO</h3>
-
-        <p>Perfeccionar mecánicas, reflejos y dominio individual.</p>
-
-      </div>
-
-      <div class="card">
-
-        <h3>MACRO</h3>
-
-        <p>Mejorar rotaciones, objetivos, mapa y toma de decisiones.</p>
-
-      </div>
-
-      <div class="card">
-
-        <h3>ANÁLISIS</h3>
-
-        <p>Estudiar partidas, detectar errores y crear estrategias.</p>
-
-      </div>
+      </nav>
 
     </div>
 
-  </section>
+  </header>
+
+  <main>
+
+    <section class="hero" id="inicio">
+
+      <div class="container hero-content">
+
+        <p class="eyebrow">MOBILE LEGENDS · COMPETITIVE DIVISION</p>
+
+        <h2>MEJORA.<br><span>ADÁPTATE.</span><br>DOMINA.</h2>
+
+        <p>
+
+          La excelencia no es casualidad. En F1 Esports trabajamos
+
+          con análisis, disciplina y estrategia para desarrollar
+
+          un equipo más inteligente, coordinado y competitivo.
+
+        </p>
+
+        <a class="button" href="#analisis">DESCUBRE NUESTRO PROYECTO ↗</a>
+
+      </div>
+
+    </section>
+
+    <section class="section" id="mision">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="eyebrow">NUESTRA IDENTIDAD</p>
+
+          <h2>Más que un equipo.</h2>
+
+          <p>Una mentalidad enfocada en aprender, adaptarse y competir.</p>
+
+        </div>
+
+        <div class="mission">
+
+          <h3>Nuestra misión</h3>
+
+          <p>
+
+            Construir un equipo de Mobile Legends capaz de competir
+
+            al máximo nivel mediante la práctica inteligente,
+
+            el análisis constante, la comunicación y la mejora continua.
+
+            Cada partida es una oportunidad para aprender.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="section" id="analisis">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="eyebrow">PERFORMANCE SYSTEM</p>
+
+          <h2>Áreas de desarrollo</h2>
+
+          <p>Trabajamos cada aspecto del juego para tomar mejores decisiones.</p>
+
+        </div>
+
+        <div class="cards">
+
+          <article class="card">
+
+            <p class="card-number">01 / MICRO</p>
+
+            <h3>Mecánica individual</h3>
+
+            <p>
+
+              Mejorar el dominio de héroes, los combos, los reflejos,
+
+              el posicionamiento y la ejecución durante los combates.
+
+            </p>
+
+          </article>
+
+          <article class="card">
+
+            <p class="card-number">02 / MACRO</p>
+
+            <h3>Control del mapa</h3>
+
+            <p>
+
+              Estudiar rotaciones, oleadas, visión, objetivos,
+
+              ventajas de oro y decisiones estratégicas.
+
+            </p>
+
+          </article>
+
+          <article class="card">
+
+            <p class="card-number">03 / REVIEW</p>
+
+            <h3>Análisis competitivo</h3>
+
+            <p>
+
+              Revisar partidas y scrims para identificar errores,
+
+              reconocer patrones y preparar mejores estrategias.
+
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="section training" id="entrenamiento">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="eyebrow">TRAINING PROTOCOL</p>
+
+          <h2>Entrenamiento inteligente</h2>
+
+          <p>
+
+            La mejora nace de practicar con un propósito y evaluar
+
+            cada resultado.
+
+          </p>
+
+        </div>
+
+        <div class="training-list">
+
+          <article class="training-item">
+
+            <h3>01. Preparación</h3>
+
+            <p>Definir objetivos individuales y colectivos antes de jugar.</p>
+
+          </article>
+
+          <article class="training-item">
+
+            <h3>02. Práctica</h3>
+
+            <p>Entrenar mecánicas, comunicación y coordinación del equipo.</p>
+
+          </article>
+
+          <article class="training-item">
+
+            <h3>03. Scrims</h3>
+
+            <p>Probar estrategias y competir contra otros equipos.</p>
+
+          </article>
+
+          <article class="training-item">
+
+            <h3>04. Evaluación</h3>
+
+            <p>Revisar resultados, corregir errores y establecer nuevas metas.</p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="closing">
+
+      <p class="eyebrow">F1 ESPORTS · PERFORMANCE LAB</p>
+
+      <h2>El siguiente nivel <span>se construye.</span></h2>
+
+      <p>
+
+        Analiza. Aprende. Adáptate. Cada decisión cuenta.
+
+        Cada entrenamiento tiene un propósito.
+
+      </p>
+
+      <a class="button" href="#inicio">VOLVER AL INICIO ↑</a>
+
+    </section>
+
+  </main>
 
   <footer>
 
-    F1 ESPORTS © 2026 — PERFORMANCE LAB
+    <div class="container footer-content">
+
+      <p class="footer-name">F1 ESPORTS | PERFORMANCE LAB</p>
+
+      <p>© 2026 · Proyecto competitivo de Mobile Legends</p>
+
+    </div>
 
   </footer>
 
